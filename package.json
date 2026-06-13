@@ -1,0 +1,16 @@
+{
+  "name": "alloya",
+  "version": "1.0.0",
+  "description": "A personal love website",
+  "private": true,
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "start": "npx http-server -p 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
