@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 الاء — أحلى بنت في الدنيا</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="heartsCanvas"></canvas>
+
+  <!-- NOTIFICATIONS -->
+  <div class="notification-container" id="notifications"></div>
+
+  <!-- MUSIC PLAYER -->
+  <div class="music-player" id="musicPlayer" style="display:none">
+    <span class="music-icon" id="musicIcon">🎵</span>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">⏸</button>
+    <span class="music-label">ليك مده مابنتا 🎶</span>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="ليك_مده_مابنتا_🎤فيصل_صلاح_حالهMP3_160K.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ===== PAGE 1: PASSWORD ===== -->
+  <div class="page active" id="page-password">
+    <div class="password-box">
+      <span class="lock-icon">🔐</span>
+      <h1>موقع سري 🌹</h1>
+      <p class="question">✨ احلا بنت في الدنيا دي منو؟ 💭</p>
+      <input type="text" class="love-input" id="passwordInput" placeholder="اكتبي الإجابة هنا..."
+        onkeypress="if(event.key==='Enter') checkPassword()">
+      <button class="love-btn" onclick="checkPassword()">💕 دخول</button>
+      <p class="error-msg" id="errorMsg">💔 غلط!! حاولي تاني... الإجابة في قلبك 😌</p>
+    </div>
+  </div>
+
+  <!-- ===== PAGE 2: WELCOME ===== -->
+  <div class="page" id="page-welcome">
+    <div class="welcome-content">
+      <div class="welcome-emoji">💖</div>
+      <h1 class="welcome-title">أهلاً يا اللويه 🌸</h1>
+      <p class="welcome-sub">
+        ماشاءالله عرفتي الإجابة ما عاوزه تفكير زاتو 😏✨<br>
+        لأنك انتي فعلاً أحلى بنت في الدنيا 🌍💕<br>
+        في انتظارك موقع صنعته بكل ذره حب في قلبي... 🥹
+      </p>
+      <button class="love-btn" style="max-width:300px" onclick="goToQuiz()">✨ يالا نكمل 💫</button>
+    </div>
+  </div>
+
+  <!-- ===== PAGE 3: QUIZ ===== -->
+  <div class="page" id="page-quiz">
+    <div class="quiz-box">
+      <div style="font-size:3rem;margin-bottom:20px">🤔💭</div>
+      <p class="quiz-question">طيب يا اللويه... خميني 😏<br>أنا بحبك قدر كيف؟ 💗</p>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="checkQuiz(0)">💗 بتحبني شديد</button>
+        <button class="quiz-option" onclick="checkQuiz(1)">💕 بتحبني شديد شديد شديد</button>
+        <button class="quiz-option" onclick="checkQuiz(2)">🌌 حب أكبر من الكوووون كله</button>
+      </div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE 4: MAIN ===== -->
+  <div class="page" id="page-main">
+
+    <!-- HEADER -->
+    <div class="main-header">
+      <p class="made-with-love">💝 هذا الموقع صُنع بكل حبة حب في قلبي 💝</p>
+      <h1 class="main-title">الويه الحلوة 🌹</h1>
+      <p class="main-subtitle">
+        يا أحلى بنت شافتها عيني في الدنيا دي...✨<br>
+        يا من سكنت قلبي 💕
+      </p>
+    </div>
+
+    <div class="divider">🌹 ❤️ 🌹 ❤️ 🌹</div>
+
+    <!-- COUNTER SECTION -->
+    <div class="section reveal">
+      <div class="counter-section">
+        <div class="section-title">⏳ معك منذ... 🕰️</div>
+        <div class="counter-grid">
+          <div class="counter-item"><span class="counter-num" id="cnt-years">0</span><span class="counter-label">سنة
+              🌟</span></div>
+          <div class="counter-item"><span class="counter-num" id="cnt-months">0</span><span class="counter-label">شهر
+              🌙</span></div>
+          <div class="counter-item"><span class="counter-num" id="cnt-days">0</span><span class="counter-label">يوم
+              ☀️</span></div>
+          <div class="counter-item"><span class="counter-num" id="cnt-hours">0</span><span class="counter-label">ساعة
+              💫</span></div>
+        </div>
+        <p class="counter-poem">
+          🌹 معك منذ يوم <span id="total-days" style="color:var(--pink);font-weight:900"></span>...<br>
+          كل يوم أحبك أكثر من اللي قبله 💖<br>
+          <span style="font-size:0.95rem;color:rgba(255,255,255,0.5)">من 15 مايو 2014 🗓️</span>
+        </p>
+
+        <!-- BIRTHDAY COUNTDOWN -->
+        <div class="birthday-counter">
+          <p class="birthday-title">🎂 العد التنازلي لعيد ميلادك يا قلبي 🎁</p>
+          <div class="birthday-grid">
+            <div class="birthday-item">
+              <div class="birthday-num" id="bd-days">-</div>
+              <div class="birthday-label">يوم</div>
+            </div>
+            <div class="birthday-item">
+              <div class="birthday-num" id="bd-hours">-</div>
+              <div class="birthday-label">ساعة</div>
+            </div>
+            <div class="birthday-item">
+              <div class="birthday-num" id="bd-mins">-</div>
+              <div class="birthday-label">دقيقة</div>
+            </div>
+            <div class="birthday-item">
+              <div class="birthday-num" id="bd-secs">-</div>
+              <div class="birthday-label">ثانية</div>
+            </div>
+          </div>
+          <p style="color:var(--gold);margin-top:15px;font-size:1.05rem">🎀 كل عام وانتي الفرحة كلها يا الاء 🎀</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">💕 🌸 💕 🌸 💕</div>
+
+    <!-- FIRST MESSAGE SECTION -->
+    <div class="section reveal">
+      <h2 class="section-title">💌 من قلبي ليكي 💌</h2>
+      <div class="messages-grid">
+        <div class="message-card">
+          🌹 انا يا الاء داير أتزوجك لأنو بحبك 💍<br>
+          داير أتزوجك لأنو انتي ظريفة ✨<br>
+          لأنو انتي سمحة وجميلة 😍<br>
+          لأنو اني ما في زيك في الدنيا دي 🌍<br>
+          لأنو انتي أهم شي ليّ 💖<br>
+          انتي — بجانبك أنا برتاح 🕊️<br>
+          وقلبي رادك... ما رد غيرك 💓
+        </div>
+        <div class="message-card">
+          🥹 ما حصل حبيت زي ما حبيتك...<br>
+          عاجبني أي شي فيك 💕<br>
+          وحا أكون مبسوط بيك 😊<br>
+          داير أولادي منك 👶🏻<br>
+          دايرك انتي تربيهم معاي 🏡<br>
+          الاء — والله بحبك حب ما عادي 💞<br>
+          حب ما قادر أوصفه بكلام 🤍
+        </div>
+        <div class="message-card">
+          💫 داير الاء ذاتها...<br>
+          الاء جاء الله شخصياً 😭💕<br>
+          أنا عاوزك وبحبك ودايرك جمبي 🤝<br>
+          تكملي معاي لين نكبر ونموت<br>
+          ونخش الجنة سوي إن شاء الله 🤲<br>
+          باقي دربي دا — داير أقضيه معاكِ 🛤️
+        </div>
+        <div class="message-card">
+          💭 بقولوا أي زول عنده واحدة طلعت من ضلعه...<br>
+          أنا شايف إنو دي — انتي يا الاء 💘<br>
+          الضلعة حقتني الناقصة ✨<br>
+          انتي بتكمليني 🧩<br>
+          وحا أسعدك بإذن الله و ما حا اخليك تحتاجي لشي 💍<br>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">🌹 ✨ 🌹 ✨ 🌹</div>
+
+    <!-- GALLERY -->
+    <div class="section reveal">
+      <h2 class="section-title">🌸 صور الحب 🌸</h2>
+      <div class="gallery-grid" id="gallery"></div>
+    </div>
+
+    <div class="divider">💕 🌙 💕 🌙 💕</div>
+
+    <!-- LOVE DECLARATIONS -->
+    <div class="section reveal">
+      <h2 class="section-title">🔥 اعترافات الحب 🔥</h2>
+      <div class="messages-grid">
+        <div class="message-card" style="text-align:center;font-size:1.2rem">
+          يا بنت 😭<br><br>
+          <span style="color:var(--pink);font-size:1.4rem;font-weight:900">أنا بحبك لاكن...</span><br>
+          <span style="color:var(--gold);font-size:1.6rem;font-weight:900">بحبك حب مبالغة 🤯💕</span><br><br>
+          كل عام وانتي كل شي 🌍<br>
+          كل عام وانتي الأمان والدفاء 🕊️<br>
+          كل عام وانتي الفي القلب 💓<br>
+          كل عام وانتي الخير والحنان 🌸<br>
+          كل عام وانتي بخير وصحة وسلامة 🤍<br>
+          كل عام وانتي حب حياتي 💖<br>
+          كل عام وانتي عمري 🥹
+        </div>
+        <div class="message-card">
+          💌 الاء طول فترتي معاك كنت بحبك...<br>
+          ولي آخر العمر اعرفي إني دايماً بحبك 💞<br><br>
+          وبحبك وبحبك وبحبك 💕<br>
+          وحا تكوني أكبر شي في قلبي 🫀<br>
+          ولين آخر نفس بحبك 😭<br>
+          وتاني داير أقولها: <strong style="color:var(--pink)">بحبك</strong><br><br>
+          الكلمة دي ما بشبع منها ولا بقدر أوصف ليك<br>
+          <strong style="color:var(--gold);font-size:1.3rem">بحبك بحبك بحبك موووووووووووت 😭💔</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">🌹 💍 🌹 💍 🌹</div>
+
+    <!-- TYPEWRITER SECTION -->
+    <div class="section reveal">
+      <h2 class="section-title">✍️ رسالة تُكتب لكِ الآن... ✍️</h2>
+      <div class="typewriter-section">
+        <div id="typewriter-text"></div><span class="cursor-blink" id="tw-cursor"></span>
+      </div>
+    </div>
+
+    <div class="divider">💕 ⭐ 💕 ⭐ 💕</div>
+
+    <!-- WHAT I LOVE ABOUT YOU -->
+    <div class="section reveal">
+      <h2 class="section-title">💗 أكتر شي بحبه فيكِ... 💗</h2>
+      <div class="love-list" id="loveList"></div>
+    </div>
+
+    <div class="divider">🌸 💖 🌸 💖 🌸</div>
+
+    <!-- SPECIAL MESSAGES -->
+    <div class="section reveal">
+      <h2 class="section-title">🤲 دعاء ورجاء 🤲</h2>
+      <div class="messages-grid">
+        <div class="message-card">
+          🕌 داير أكون زيك — داير أخاف من الله زيك<br>
+          داير أكون إنسان يستاهلك 💫<br>
+          انتي السبب اللي بيخليني أحاول<br>
+          أكون أحسن نسخة من نفسي كل يوم 🌱<br>
+          ربنا يديمك علي ويجمعنا على خير 🤲
+        </div>
+        <div class="message-card">
+          ✨ الله ما بعطي الزين دا لأي زول...<br>
+          بس أنا إن شاء الله حا أكون محظوظ 🍀<br><br>
+          🌸 ربنا احفظك وأخليك وأثبتك على خطاكِ يا رب<br><br>
+          🎓 وعقبال تكوني أحسن دكتورة في السودان إن شاء الله 💙
+        </div>
+        <div class="message-card">
+          🕌 أتذكر كيف كنت بقعد اليوم في المصلاية<br>
+          وأدعي ربي يجمعنا سوى...<br>
+          أشيل وأدعي وأدعي 🥹<br>
+          كنت بطول في السجود...<br>
+          بحس بشعور سمح بمتعة<br>
+          وأنا بدعي ليكِ يا الاء 💕<br>
+          وبدعي إنو ربنا أخليني أكون ليكِ الخير 🤍
+        </div>
+        <div class="message-card">
+          💍 شفتي — من أسمع كلمة "الزوجة الصالحة"<br>
+          في راسي طوالي بتترجم لي "الاء" 😭💕<br>
+          فيكِ كل الصفات والله العظيم 💎<br><br>
+          🏆 البكسبك دا بكسب دنيا وآخرة...<br>
+          أسي يا الاء في حاجة أحسن من إنو<br>
+          زول ألقا له واحدة زيك تربي له بناته؟<br>
+          ما في والله 💝
+        </div>
+        <div class="message-card" style="text-align:center">
+          💌 انتي أكبر حلمي...<br>
+          تعيشي معاي 🏡<br>
+          تأسسي معاي 🌱<br>
+          تكوني معاي في الحلوة والمرة 🥹<br><br>
+          <span style="color:var(--gold);font-size:1.3rem">أنا سعيد بيكِ شديد 😊</span><br>
+          ما في زول شايف قيمتك زي الشايفها أنا 💖<br>
+          يا الاء يا الاء<br>
+          <strong style="color:var(--light-pink)">يا أحن وأجمل بنوتة عرفتها في حياتي ✨💖</strong>
+        </div>
+        <div class="message-card" style="text-align:center;font-size:1.1rem">
+          😍 انتي سمحة حلوة — حلا فوق ما تتصوري!<br>
+          ملامح وايييي... و كمان ضحكتك 😩<br>
+          تجنني ياخ 🙈💕<br><br>
+          حاجة حزينة تروح على بنت زي الاء<br>
+          بحب أسمعك بحب لمن تحكي لي 🎶<br>
+          بحب أعرف أي حاجة تحصل معاكِ 💌<br>
+          ما داير أضيع لحظة منك 🕰️💕<br><br>
+          <span style="color:var(--pink);font-weight:900;font-size:1.3rem">🩷🩷🩷 بحبك 🩷🩷🩷</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">🌹 👑 🌹 👑 🌹</div>
+
+    <!-- FUNNY NOTE -->
+    <div class="section reveal" style="text-align:center">
+      <div class="message-card" style="max-width:500px;margin:0 auto;font-size:1.2rem;text-align:center">
+        <span style="font-size:3rem">👨‍🍳</span><br><br>
+        <strong style="color:var(--gold)">اتعلمت أطبخ برأي 😁</strong><br>
+        عشان بعدين ما تاكليني أندومي بس 🤣🤣🤣<br><br>
+        <span style="color:var(--pink)">مستعد أطبخ ليكِ كل يوم 💕</span>
+      </div>
+    </div>
+
+    <div class="divider">💕 🎊 💕 🎊 💕</div>
+
+    <!-- PROPOSAL SECTION -->
+    <div class="proposal-section reveal">
+      <span class="proposal-ring">💍</span>
+      <h2 class="section-title" style="-webkit-text-fill-color: var(--gold);font-size:2.5rem">
+        بتين بس ي الاء أتزوجك 💍
+      </h2>
+      <p class="proposal-text">
+        🌹 انتي أحلى بنوتة خلقها ربنا..<br>
+        شفتك بعيني وعرفت إنك الله كريم معاي 🤲<br><br>
+        حياتي معاكِ تبقى كاملة إن شاء الله 💕<br>
+        وأنا حا أسعدك كل يوم — أوعدك 🌟<br><br>
+        <strong style="color:var(--pink);font-size:1.5rem">بتين البسك الخاتم بي نفسي 💍💖💕💗</strong>
+      </p>
+    </div>
+
+    <div class="divider">🌹 💖 🌹 💖 🌹</div>
+
+    <!-- GIFT EXPERIENCE -->
+    <div class="surprise-section" id="giftSection">
+      <h2 class="section-title">🎁 فيه هدية ليكِ... 🎁</h2>
+      <p style="color:#ffd6e7;margin-bottom:30px;font-size:1.1rem">اضغطي لو ما خايفة 😏💕</p>
+      <button class="surprise-btn" id="giftStartBtn" onclick="startGiftExperience()">
+        🎁 اضغطي هنا عشان تشوفي الهدية! 💝
+      </button>
+
+      <!-- Step 1: Closed Box -->
+      <div id="giftStep1" style="display:none">
+        <div class="gift-box-container">
+          <div class="gift-box-closed" id="closedBox">
+            <div class="gift-box-lid">🎀</div>
+            <div class="gift-box-body">🎁</div>
+            <div class="gift-lock">🔒</div>
+          </div>
+        </div>
+        <div class="message-card" style="text-align:center;font-size:1.3rem;max-width:600px;margin:20px auto">
+          😏 دي الهدية لاكن قافلة 🔒<br><br>
+          <span style="color:var(--gold);font-size:1.1rem">اضغطي تحت عشان تاخدي المفتاح 🔑</span>
+        </div>
+        <button class="surprise-btn" style="margin-top:20px" onclick="showProposal()">
+          🔑 اخدي المفتاح
+        </button>
+      </div>
+
+      <!-- Step 2: Proposal Question -->
+      <div id="giftStep2" style="display:none">
+        <div class="proposal-question-box">
+          <div class="proposal-emoji">💍✨</div>
+          <h2 class="proposal-main-question">موافقة تتزوجيني ؟ 💖</h2>
+          <div class="proposal-angry" id="angryMsg" style="display:none">
+            <span style="font-size:3rem">😤</span><br>
+            <span style="color:var(--rose);font-size:1.3rem;font-weight:900">مافي أي طريقة!! 😡</span>
+          </div>
+          <div class="proposal-buttons" id="proposalButtons">
+            <button class="proposal-yes-btn" id="yesBtn" onclick="acceptProposal()">اااي موافقة 💕</button>
+            <button class="proposal-no-btn" id="noBtn" onmouseenter="escapeNoBtn()" onclick="escapeNoBtn()">لا
+              😅</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Celebration -->
+      <div id="giftStep3" style="display:none">
+        <div class="celebration-container">
+          <div class="celebration-emojis" id="celebrationEmojis"></div>
+          <h2 class="celebration-title">🎉🥳 الحمد لله على النعمة دي 🥳🎉</h2>
+          <p class="celebration-sub">💕 يا أسعد لحظة في حياتي 💕</p>
+          <button class="open-box-btn" id="openBoxBtn" onclick="openGiftBox()">
+            📦 افتحي الصندوق 🎁
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Ring Reveal -->
+      <div id="giftStep4" style="display:none">
+        <div class="ring-reveal-container">
+          <div class="ring-glow">
+            <span class="ring-emoji">💍</span>
+          </div>
+          <div class="ring-message">
+            <p style="font-size:1.8rem;color:var(--gold);font-weight:900;margin-bottom:20px">
+              💍 بس بانتظر اليوم ال حا ألبسك ليه بنفسي 💍
+            </p>
+          </div>
+          <div class="couple-names">
+            <span class="name-alaa">Alaa</span>
+            <span class="name-heart">❤️</span>
+            <span class="name-mosab">Mosab</span>
+          </div>
+          <p class="forever-text">💕 إلى الأبد إن شاء الله 💕</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p style="font-size:1.1rem;color:var(--pink)">💖 صُنع بكل حب في قلبي خصيصاً ليكِ يا الاء 💖</p>
+      <p style="margin-top:10px">🌹 بحبك موووووووووووووووت 😭💔 🌹</p>
+    </div>
+
+  </div><!-- end page-main -->
+
+  <script src="app.js"></script>
+</body>
+
+</html>
