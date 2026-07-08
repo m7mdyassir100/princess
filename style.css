@@ -1031,7 +1031,7 @@ body.scrollable {
   filter: drop-shadow(0 0 20px rgba(255,107,157,0.5));
 }
 
-.name-mosab {
+.name-mohammed {
   font-size: 3.5rem;
   font-weight: 900;
   background: linear-gradient(135deg, #d4af37, #f0c060, #d4af37, #f0c060);
@@ -1071,7 +1071,7 @@ body.scrollable {
   .proposal-main-question { font-size: 1.6rem; }
   .proposal-yes-btn, .proposal-no-btn { padding: 14px 30px; font-size: 1.1rem; }
   .celebration-title { font-size: 1.8rem; }
-  .name-alaa, .name-mosab { font-size: 2.5rem; }
+  .name-alaa, .name-mohammed { font-size: 2.5rem; }
   .name-heart { font-size: 2rem; }
   .ring-emoji { font-size: 6rem; }
   .couple-names { gap: 15px; }
