@@ -151,7 +151,7 @@ function initMainPage() {
 
 // ===== COUNTER =====
 function initCounter() {
-  const start = new Date('2022-11-25T00:00:00');
+  const start = new Date('2021-11-25T00:00:00');
   function update() {
     const now = new Date();
     const diff = now - start;
