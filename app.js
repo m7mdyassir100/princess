@@ -65,7 +65,7 @@ function showPage(id) {
 function checkPassword() {
   const val = document.getElementById('passwordInput').value.trim();
   const err = document.getElementById('errorMsg');
-  if (val === 'الاء' || val === 'الاء ' || val.toLowerCase() === 'alaa') {
+  if (val === 'جيلان' || val === 'جيلان ' || val.toLowerCase() === 'jilan') {
     err.style.display = 'none';
     showPage('page-welcome');
     startMusic();
@@ -89,7 +89,7 @@ function checkQuiz(idx) {
   fb.className = 'quiz-feedback';
   if (idx === 2) {
     fb.className = 'quiz-feedback correct';
-    fb.innerHTML = '🎉✨ صح!!! وأكثر من كدا كمان!! 🥹💕<br>بحبك أكتر من الكون كله يا الاء 🌌💖<br>يالا نكمل الموقع 😍';
+    fb.innerHTML = '🎉✨ صح!!! وأكثر من كدا كمان!! 🥹💕<br>بحبك أكتر من الكون كله يا جيلان 🌌💖<br>يالا نكمل الموقع 😍';
     setTimeout(() => {
       showPage('page-main');
       document.body.classList.add('scrollable');
@@ -101,7 +101,7 @@ function checkQuiz(idx) {
     if (quizAttempts < 3) {
       fb.innerHTML = '😅 قالوا يعني بحبك قدر كدا بس!! غلط! اختاري تاني 😤💕';
     } else {
-      fb.innerHTML = '😭 يا الاء الإجابة مش في الكلام الإجابة في قلبك 💕 جربي مرة تانية!';
+      fb.innerHTML = '😭 يا جيلان الإجابة مش في الكلام الإجابة في قلبك 💕 جربي مرة تانية!';
     }
   }
   fb.style.display = 'block';
@@ -150,7 +150,7 @@ function initMainPage() {
 
 // ===== COUNTER =====
 function initCounter() {
-  const start = new Date('2014-05-15T00:00:00');
+  const start = new Date('2022-11-25T00:00:00');
   function update() {
     const now = new Date();
     const diff = now - start;
@@ -166,8 +166,8 @@ function initCounter() {
     document.getElementById('total-days').textContent = totalDays.toLocaleString('ar');
     // Birthday countdown (May 1)
     const currentYear = now.getFullYear();
-    let bday = new Date(currentYear, 4, 1); // May 1
-    if (now > bday) bday = new Date(currentYear + 1, 4, 1);
+    let bday = new Date(currentYear, 6, 4); // July 4
+    if (now > bday) bday = new Date(currentYear + 1, 6, 4);
     const bdDiff = bday - now;
     const bdDays = Math.floor(bdDiff / (1000 * 60 * 60 * 24));
     const bdHours = Math.floor((bdDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -227,7 +227,7 @@ function initGallery() {
 
 // ===== TYPEWRITER =====
 function initTypewriter() {
-  const text = `يا الاء...\n\nأنا سعيد بيكِ شديد — يعني ما في زول شايف قيمتك زي الشايفها أنا 💖\n\nيا أحن وأجمل بنوتة عرفتها في حياتي... ✨\n\nانتي سمحة حلوة — حلا فوق ما تتصوري!\nأول مرة شفتك — سحرتيني 🌟\nضحكتك تجنني... 🙈\nكلامك كله حلو وظريف 🎀\n\nبحب أسمعك وبحب لمن تحكي لي 💌\nبحب أعرف كل حاجة تحصل معاكِ 🤍\nخليتيني أحب أتكلم مع نفسي وأضحك وأنا بتخيلك 😅💕\n\nما داير أضيع لحظة منك\nولا ثانية\nولا نَفَس 🥹\n\nيا كلمة بحبك — دي كلمة كبيرة ما هينة\nوأنا بالجد بالجد بالجد...\n\n💕 بحبك يا الاء 💕`;
+  const text = `يا جيلان...\n\nأنا سعيد بيكِ شديد — يعني ما في زول شايف قيمتك زي الشايفها أنا 💖\n\nيا أحن وأجمل بنوتة عرفتها في حياتي... ✨\n\nانتي سمحة حلوة — حلا فوق ما تتصوري!\nأول مرة شفتك — سحرتيني 🌟\nضحكتك تجنني... 🙈\nكلامك كله حلو وظريف 🎀\n\nبحب أسمعك وبحب لمن تحكي لي 💌\nبحب أعرف كل حاجة تحصل معاكِ 🤍\nخليتيني أحب أتكلم مع نفسي وأضحك وأنا بتخيلك 😅💕\n\nما داير أضيع لحظة منك\nولا ثانية\nولا نَفَس 🥹\n\nيا كلمة بحبك — دي كلمة كبيرة ما هينة\nوأنا بالجد بالجد بالجد...\n\n💕 بحبك يا جيلان 💕`;
   const el = document.getElementById('typewriter-text');
   let i = 0;
   function type() {
@@ -295,7 +295,7 @@ function initNotifications() {
     '❤️ شخص بحبك موت الحين 😭',
     '💕 قلبي بيسألك عنك دايماً',
     '🌟 الله يحفظك يا نور عيني',
-    '💍 عقبال ما نقعد سوى يا الاء',
+    '💍 عقبال ما نقعد سوى يا جيلان',
     '🎵 أغنية بفكرك فيها الآن...',
     '🌹 بحبك بحبك بحبك موت!',
     '🥹 تعبت من بعدك متى نكون سوا؟',
@@ -306,7 +306,7 @@ function initNotifications() {
     '🌍 لو الدنيا تغيرت أنا ما بتغير',
     '🫀 قلبك الطيب مالي الدنيا حنان',
     '💖 بحبك قد الدنيا و أكتر 💖',
-    '🎀 الاء — الاء — الاء... بشبع منها؟ لا 🥰',
+    '🎀 جيلان — جيلان — جيلان... بشبع منها؟ لا 🥰',
   ];
   let idx = 0;
   function showNotif() {
