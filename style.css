@@ -25,6 +25,7 @@ body {
 body.scrollable {
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 /* ===== HEARTS CANVAS ===== */
@@ -274,9 +275,12 @@ body.scrollable {
 #page-main {
   display: none;
   padding: 0;
+  /* ensure content starts from top and nothing bleeds below viewport on mobile */
 }
 
-#page-main.active { display: block; }
+#page-main.active {
+  display: block;
+}
 
 /* ===== MUSIC PLAYER ===== */
 .music-player {
@@ -376,9 +380,16 @@ body.scrollable {
 /* ===== HEADER ===== */
 .main-header {
   text-align: center;
-  padding: 80px 20px 40px;
+  /* fill the full viewport height on first load so content below is hidden */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px 40px;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .made-with-love {
@@ -388,7 +399,7 @@ body.scrollable {
 }
 
 .main-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.2rem, 6vw, 4rem);
   background: linear-gradient(135deg, #ff6b9d, #d4af37, #ff4d6d, #ffb3c6);
   background-size: 300% 300%;
   -webkit-background-clip: text;
@@ -406,10 +417,11 @@ body.scrollable {
 }
 
 .main-subtitle {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #ffd6e7;
   line-height: 2;
   font-style: italic;
+  padding: 0 10px;
 }
 
 /* ===== COUNTER ===== */
@@ -1067,12 +1079,101 @@ body.scrollable {
   margin-top: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  /* Header fills full screen on mobile so content below stays hidden */
+  .main-header {
+    min-height: 100svh; /* safe viewport height for mobile browsers */
+    padding: 40px 15px 30px;
+  }
+
+  .main-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .main-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .made-with-love {
+    font-size: 0.95rem;
+  }
+
+  /* Sections padding reduction on mobile */
+  .section {
+    padding: 50px 15px;
+  }
+
+  .counter-section {
+    margin: 0 10px;
+    padding: 30px 15px;
+  }
+
+  .message-card {
+    padding: 20px 15px;
+    font-size: 1rem;
+    line-height: 2;
+  }
+
+  .typewriter-section {
+    padding: 30px 15px;
+  }
+
+  .surprise-btn {
+    padding: 16px 30px;
+    font-size: 1.1rem;
+  }
+
+  .proposal-section {
+    padding: 40px 15px;
+  }
+
   .proposal-main-question { font-size: 1.6rem; }
   .proposal-yes-btn, .proposal-no-btn { padding: 14px 30px; font-size: 1.1rem; }
   .celebration-title { font-size: 1.8rem; }
-  .name-alaa, .name-mohammed { font-size: 2.5rem; }
-  .name-heart { font-size: 2rem; }
-  .ring-emoji { font-size: 6rem; }
-  .couple-names { gap: 15px; }
+  .name-alaa, .name-mohammed { font-size: 2.2rem; }
+  .name-heart { font-size: 1.8rem; }
+  .ring-emoji { font-size: 5rem; }
+  .couple-names { gap: 12px; flex-wrap: wrap; }
+
+  .divider {
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+    padding: 15px;
+  }
+
+  .music-player {
+    bottom: 10px;
+    left: 10px;
+    padding: 8px 14px;
+  }
+
+  .music-label { display: none; }
+
+  .welcome-title {
+    font-size: 2.2rem;
+  }
+
+  .welcome-sub {
+    font-size: 1.1rem;
+  }
+
+  .quiz-box {
+    padding: 30px 20px;
+  }
+
+  .quiz-question {
+    font-size: 1.2rem;
+  }
+
+  .birthday-counter {
+    padding: 20px 10px;
+  }
+
+  .ring-reveal-container {
+    padding: 40px 15px;
+  }
+
+  .ring-message p {
+    font-size: 1.3rem !important;
+  }
 }
