@@ -65,7 +65,8 @@ function showPage(id) {
 function checkPassword() {
   const val = document.getElementById('passwordInput').value.trim();
   const err = document.getElementById('errorMsg');
-  if (val === 'جيلان' || val === 'جيلان ' || val.toLowerCase() === 'jilan') {
+  const accepted = ['جيلان', 'جيلان ', 'جيلن', 'جيلاان', 'jiilan', 'jilan', 'jilaan', 'gelan', 'Gilan', 'Jilan'];
+  if (accepted.includes(val) || accepted.map(x => x.toLowerCase()).includes(val.toLowerCase())) {
     err.style.display = 'none';
     showPage('page-welcome');
     startMusic();
